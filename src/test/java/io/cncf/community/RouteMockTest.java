@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import io.cncf.community.dto.PersonDto;
+import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 
@@ -13,6 +14,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
+@TestHTTPEndpoint(PersonResource.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RouteMockTest {
         
@@ -21,7 +23,7 @@ public class RouteMockTest {
     public void getPersonTest() {     
         given()
         .when()
-            .get("/person")
+            .get()
         .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
@@ -41,7 +43,7 @@ public class RouteMockTest {
             .body(new PersonDto("", ""))
             .contentType(ContentType.JSON)
         .when()
-            .post("/person")
+            .post()
         .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
@@ -57,7 +59,7 @@ public class RouteMockTest {
             .body(new PersonDto("", ""))
             .contentType(ContentType.JSON)
         .when()
-            .put("/person/664f4bf9c70dd20036c229cb")
+            .put("/664f4bf9c70dd20036c229cb")
         .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
@@ -71,7 +73,7 @@ public class RouteMockTest {
     public void deletePersonTest() {     
         given()
         .when()
-            .delete("/person/664f4bf9c70dd20036c229cb")
+            .delete("/664f4bf9c70dd20036c229cb")
         .then()
             .statusCode(204); 
     }

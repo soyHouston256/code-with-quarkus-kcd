@@ -47,9 +47,9 @@ public class RouteMockTest {
         .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
-            .body("id", is("664f4bf9c70dd20036c229cb"))
-            .body("name", is("Luis Falero"))
-            .body("email", is("lfalero@gmail.com")); 
+            .body("id", is("664f4bf9c70dd20036c229cc"))
+            .body("name", is("Luis Otiniano"))
+            .body("email", is("lotiniano@gmail.com")); 
     }
 
     @Test
@@ -59,13 +59,13 @@ public class RouteMockTest {
             .body(new PersonDto("", ""))
             .contentType(ContentType.JSON)
         .when()
-            .put("/664f4bf9c70dd20036c229cb")
+            .put("/664f4bf9c70dd20036c229cd")
         .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
-            .body("id", is("664f4bf9c70dd20036c229cb"))
-            .body("name", is("Luis Falero"))
-            .body("email", is("lfalero@gmail.com")); 
+            .body("id", is("664f4bf9c70dd20036c229cd"))
+            .body("name", is("Paul Lopez"))
+            .body("email", is("plopez@gmail.com")); 
     }
 
     @Test

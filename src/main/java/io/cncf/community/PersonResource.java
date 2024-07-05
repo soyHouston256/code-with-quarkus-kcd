@@ -13,6 +13,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/person")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,17 +30,18 @@ public class PersonResource {
 
     @POST    
     public PersonDto create(PersonDto request) {
-        return new PersonDto("664f4bf9c70dd20036c229cb", "Luis Falero", "lfalero@gmail.com");
+        return new PersonDto("664f4bf9c70dd20036c229cc", "Luis Otiniano", "lotiniano@gmail.com");
     }
 
     @PUT
     @Path("/{id}")
     public PersonDto update(@PathParam("id") String id, PersonDto person) {
-        return new PersonDto("664f4bf9c70dd20036c229cb", "Luis Falero", "lfalero@gmail.com");
+        return new PersonDto("664f4bf9c70dd20036c229cd", "Paul Lopez", "plopez@gmail.com");
     }
 
     @DELETE
     @Path("/{id}")
-    public void delete(@PathParam("id") String id) {        
+    public Response delete(@PathParam("id") String id) {   
+        return Response.noContent().build();
     }
 }
